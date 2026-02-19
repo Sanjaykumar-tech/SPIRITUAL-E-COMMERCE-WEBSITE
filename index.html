@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ஆதியும் அந்தமும் - ஆன்மீக புத்தகங்கள் & ஞானம்</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Razorpay Payment Gateway -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <!-- PRELOADER -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <img src="images/logo.png" alt="Logo" class="preloader-logo">
+            <h2>ஆதியும் அந்தமும்</h2>
+            <p>உங்களுக்குள்ளே ஒரு பயணம்...</p>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="ஆதியும் அந்தமும்" class="logo-image">
+                <div class="logo-text">
+                    <h2>ஆதியும் அந்தமும்</h2>
+                    <p>உங்களுக்குள்ளே ஒரு பயணம்</p>
+                </div>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#home" class="active">முகப்பு</a></li>
+                    <li><a href="#videos">வீடியோக்கள்</a></li>
+                    <li><a href="#books">புத்தகங்கள்</a></li>
+                    <li><a href="#stories">கதைகள் & கட்டுரைகள்</a></li>
+                    <li><a href="#about">எங்களைப் பற்றி</a></li>
+                    <li><a href="#contact">தொடர்புக்கு</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="#cart" class="cart-btn" id="cartBtn" onclick="openCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <a href="#login" class="login-btn" onclick="openLoginModal()">
+                    <i class="fas fa-user"></i> உள்நுழைய
+                </a>
+                <div class="menu-icon" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-video-bg">
+            <video autoplay muted loop id="heroVideo">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-spiritual-background-44354-large.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <img src="images/logo.png" alt="ஆதியும் அந்தமும்" class="hero-logo">
+            <h1 class="hero-title">
+                ஆதியும் அந்தமும்
+                <span>உங்களுக்குள்ளே ஒரு பயணம்</span>
+            </h1>
+            <p class="hero-subtitle">
+                திருக்குறள் | சித்தர்கள் | தத்துவம் | ஆன்மீகம்
+            </p>
+            
+            <!-- LIVE VIDEO VIEWS COUNTER -->
+            <div class="live-stats">
+                <div class="live-item">
+                    <i class="fab fa-youtube"></i>
+                    <div class="live-info">
+                        <span class="live-label">மொத்த பார்வைகள்</span>
+                        <span class="live-number" id="totalViews">84,357</span>
+                    </div>
+                </div>
+                <div class="live-item">
+                    <i class="fas fa-users"></i>
+                    <div class="live-info">
+                        <span class="live-label">சந்தாதாரர்கள்</span>
+                        <span class="live-number" id="totalSubs">1.21K</span>
+                    </div>
+                </div>
+                <div class="live-item">
+                    <i class="fas fa-video"></i>
+                    <div class="live-info">
+                        <span class="live-label">மொத்த வீடியோக்கள்</span>
+                        <span class="live-number" id="totalVideos">51</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#videos" class="btn btn-primary">
+                    <i class="fas fa-play"></i> வீடியோக்கள் பார்க்க
+                </a>
+                <a href="#books" class="btn btn-secondary">
+                    <i class="fas fa-book"></i> புத்தகங்கள் வாங்க
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO SECTION -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <div class="section-header">
+                <h2>YouTube <span>வீடியோக்கள்</span></h2>
+                <p>ஞானத்தை நோக்கிய உங்கள் பயணத்தில் எங்களுடன் இணையுங்கள்</p>
+            </div>
+            
+            <div class="video-filters">
+                <button class="filter-btn active" onclick="filterVideos('all')">அனைத்தும்</button>
+                <button class="filter-btn" onclick="filterVideos('thirukural')">திருக்குறள்</button>
+                <button class="filter-btn" onclick="filterVideos('siddhar')">சித்தர்கள்</button>
+                <button class="filter-btn" onclick="filterVideos('stories')">கதைகள்</button>
+            </div>
+            
+            <!-- AUTO-SCROLL VIDEO SLIDER -->
+            <div class="video-slider-container">
+                <div class="video-slider" id="videoSlider"></div>
+                <div class="slider-controls">
+                    <button class="slider-btn prev" onclick="slideVideos('prev')"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-btn next" onclick="slideVideos('next')"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="videos-grid" id="videosGrid"></div>
+            
+            <div class="text-center">
+                <a href="https://youtube.com/@AadhiyumAnthamum" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-youtube"></i> மேலும் வீடியோக்கள் பார்க்க
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKS SECTION -->
+    <section id="books" class="books">
+        <div class="container">
+            <div class="section-header">
+                <h2>ஆன்மீக <span>புத்தகங்கள்</span></h2>
+                <p>ஞானத்தை நோக்கிய பயணம் - உங்கள் வீட்டிலேயே</p>
+            </div>
+            
+            <div class="book-filters">
+                <button class="filter-btn active" onclick="filterBooks('all')">அனைத்தும்</button>
+                <button class="filter-btn" onclick="filterBooks('thirukural')">திருக்குறள்</button>
+                <button class="filter-btn" onclick="filterBooks('siddhar')">சித்தர்கள்</button>
+                <button class="filter-btn" onclick="filterBooks('philosophy')">தத்துவம்</button>
+                <button class="filter-btn" onclick="filterBooks('stories')">கதைகள்</button>
+            </div>
+            
+            <div class="books-grid" id="booksGrid"></div>
+        </div>
+    </section>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>உங்கள் வண்டி</h3>
+            <i class="fas fa-times" onclick="closeCart()"></i>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-total">
+            <div class="total-row">
+                <span>மொத்தம்:</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">
+                <i class="fas fa-credit-card"></i> வாங்குவதற்கு
+            </button>
+        </div>
+    </div>
+
+    <!-- PAYMENT MODAL -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>பணம் செலுத்துதல்</h3>
+                <i class="fas fa-times" onclick="closeModal()"></i>
+            </div>
+            <div class="modal-body">
+                <div class="order-summary" id="orderSummary"></div>
+                
+                <div class="payment-methods">
+                    <h4>பணம் செலுத்தும் முறை</h4>
+                    
+                    <div class="payment-option">
+                        <input type="radio" name="payment" id="upi" value="upi" checked>
+                        <label for="upi">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>
+                                <span>UPI (Google Pay, PhonePe, Paytm)</span>
+                                <strong class="upi-id">yesk71955ypl@okhdfcbank</strong>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <input type="radio" name="payment" id="card" value="card">
+                        <label for="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Credit / Debit Card</span>
+                        </label>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <input type="radio" name="payment" id="netbanking" value="netbanking">
+                        <label for="netbanking">
+                            <i class="fas fa-university"></i>
+                            <span>Net Banking</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="customer-details">
+                    <h4>உங்கள் விவரங்கள்</h4>
+                    <input type="text" id="customerName" placeholder="முழு பெயர்" required>
+                    <input type="email" id="customerEmail" placeholder="மின்னஞ்சல்" required>
+                    <input type="tel" id="customerPhone" placeholder="தொலைபேசி எண்" required>
+                    <textarea id="customerAddress" placeholder="முகவரி" rows="3" required></textarea>
+                </div>
+                
+                <div class="payment-info">
+                    <p><i class="fas fa-phone"></i> 9655595341 | Ulundurpet, TN 606107</p>
+                </div>
+                
+                <button class="pay-now-btn" onclick="processPayment()">
+                    <i class="fas fa-lock"></i> ₹<span id="payAmount">0</span> - பணம் செலுத்து
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STORIES SECTION -->
+    <section id="stories" class="stories">
+        <div class="container">
+            <div class="section-header">
+                <h2>கதைகள் & <span>கட்டுரைகள்</span></h2>
+                <p>1000+ ஆன்மீக கதைகள் மற்றும் கட்டுரைகள் - தினமும் புதியவை</p>
+            </div>
+            
+            <div class="stories-tabs">
+                <button class="tab-btn active" onclick="filterStories('all')">அனைத்தும்</button>
+                <button class="tab-btn" onclick="filterStories('stories')">கதைகள்</button>
+                <button class="tab-btn" onclick="filterStories('articles')">கட்டுரைகள்</button>
+            </div>
+            
+            <div class="stories-grid" id="storiesGrid"></div>
+            
+            <div class="auto-update-badge">
+                <i class="fas fa-sync-alt"></i> தினமும் 10+ புதிய கதைகள் தானாக சேர்க்கப்படும்
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>எங்களைப் <span>பற்றி</span></h2>
+                <p>எங்கள் பயணம் - 2025 முதல் இன்று வரை</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>எங்கள் கதை</h3>
+                    <p>நாங்கள் தொடங்கி 1 வருடம் கூட ஆகவில்லை, ஆனால் எங்களுடைய பயணம் பெரிதாக வளர்ந்துள்ளது. 84,357 பார்வைகள், 1,210 சந்தாதாரர்கள், 51 வீடியோக்கள் - இது எங்கள் பயணத்தின் தொடக்கம் மட்டுமே.</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>அக்டோபர் 2025</h4>
+                                <p>YouTube சேனல் தொடக்கம் - முதல் வீடியோ வெளியீடு</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>டிசம்பர் 2025</h4>
+                                <p>1000 சந்தாதாரர்கள் - திருக்குறள் தொடர் ஆரம்பம்</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>ஜனவரி 2026</h4>
+                                <p>50+ வீடியோக்கள், 80K+ பார்வைகள் - முதல் புத்தகம் வெளியீடு</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>இன்று</h4>
+                                <p>1000+ ஆன்மீக கதைகள், 10+ புத்தகங்கள் - தொடரும் பயணம்</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>1 வருடம்</h4>
+                        <p>பயணம்</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-video"></i>
+                        <h4>51</h4>
+                        <p>வீடியோக்கள்</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-eye"></i>
+                        <h4>84K+</h4>
+                        <p>பார்வைகள்</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h4>1.2K+</h4>
+                        <p>சந்தாதாரர்கள்</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-book"></i>
+                        <h4>10+</h4>
+                        <p>புத்தகங்கள்</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-feather-alt"></i>
+                        <h4>1000+</h4>
+                        <p>கதைகள்</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>தொடர்புக்கு</h2>
+                <p>உங்கள் கேள்விகள், கருத்துகள், ஆலோசனைகளை பகிர்ந்துகொள்ளுங்கள்</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>மின்னஞ்சல்</h4>
+                            <p>aadhiyamanthamumofficial@gmail.com</p>
+                            <small>✓ AI Spam Filter Activated</small>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>தொலைபேசி</h4>
+                            <p>9655595341</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>முகவரி</h4>
+                            <p>Ulundurpet, Tamil Nadu - 606107</p>
+                        </div>
+                    </div>
+                    
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h4>AI பாதுகாப்பு</h4>
+                            <p>தவறான மின்னஞ்சல்கள் தானாகத் தடுக்கப்படும்</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); sendMessage()">
+                    <input type="text" placeholder="உங்கள் பெயர்" required>
+                    <input type="email" placeholder="உங்கள் மின்னஞ்சல்" required>
+                    <input type="text" placeholder="பொருள்" required>
+                    <textarea placeholder="உங்கள் செய்தி" rows="5" required></textarea>
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> அனுப்பவும்
+                        </button>
+                        <span class="spam-protection"><i class="fas fa-check-circle"></i> Spam protected</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal login-modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>உள்நுழைய</h3>
+                <i class="fas fa-times" onclick="closeLoginModal()"></i>
+            </div>
+            <div class="modal-body">
+                <div class="login-tabs">
+                    <button class="login-tab active" onclick="switchLoginTab('email')">மின்னஞ்சல்</button>
+                    <button class="login-tab" onclick="switchLoginTab('mobile')">மொபைல்</button>
+                </div>
+                
+                <div class="login-form" id="emailLogin">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="மின்னஞ்சல்" id="loginEmail" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="கடவுச்சொல்" id="loginPassword" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('loginPassword')"></i>
+                    </div>
+                    <button class="btn btn-primary" onclick="loginWithEmail()">
+                        <i class="fas fa-sign-in-alt"></i> உள்நுழைய
+                    </button>
+                    <div class="login-footer">
+                        <p>புதிய கணக்கு? <a href="#" onclick="openRegisterModal(); closeLoginModal();">பதிவு செய்க</a></p>
+                    </div>
+                </div>
+                
+                <div class="login-form" id="mobileLogin" style="display: none;">
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" placeholder="மொபைல் எண்" id="loginMobile" maxlength="10" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-key"></i>
+                        <input type="text" placeholder="OTP" id="loginOtp" maxlength="6" required>
+                        <button class="otp-btn" onclick="sendOtp()">OTP அனுப்பு</button>
+                    </div>
+                    <button class="btn btn-primary" onclick="loginWithMobile()">
+                        <i class="fas fa-sign-in-alt"></i> OTP மூலம் உள்நுழைய
+                    </button>
+                    <div class="login-footer">
+                        <p>புதிய கணக்கு? <a href="#" onclick="openRegisterModal(); closeLoginModal();">பதிவு செய்க</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGISTER MODAL -->
+    <div class="modal register-modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-plus"></i> புதிய கணக்கு உருவாக்க</h3>
+                <i class="fas fa-times" onclick="closeRegisterModal()"></i>
+            </div>
+            
+            <div class="modal-body">
+                <div class="register-tabs">
+                    <button class="register-tab active" onclick="switchRegisterTab('email')">
+                        <i class="fas fa-envelope"></i> மின்னஞ்சல்
+                    </button>
+                    <button class="register-tab" onclick="switchRegisterTab('mobile')">
+                        <i class="fas fa-phone"></i> மொபைல்
+                    </button>
+                </div>
+
+                <div class="register-form" id="emailRegister">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="regName" placeholder="முழு பெயர்" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="regEmail" placeholder="மின்னஞ்சல்" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="regPhone" placeholder="தொலைபேசி எண்" maxlength="10" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="regPassword" placeholder="கடவுச்சொல்" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('regPassword')"></i>
+                    </div>
+                    
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <span class="strength-text" id="strengthText"></span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="regConfirmPassword" placeholder="கடவுச்சொல்லை உறுதி செய்க" required>
+                        <i class="fas fa-eye toggle-password" onclick="togglePassword('regConfirmPassword')"></i>
+                    </div>
+                    
+                    <div class="terms-checkbox">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="acceptTerms">
+                            <span class="checkmark"></span>
+                            <span>நிபந்தனைகளை ஏற்கிறேன் <a href="#" onclick="showTerms()">Terms & Conditions</a></span>
+                        </label>
+                    </div>
+                    
+                    <button class="btn btn-primary register-btn" onclick="registerWithEmail()">
+                        <i class="fas fa-user-plus"></i> பதிவு செய்க
+                    </button>
+                </div>
+
+                <div class="register-form" id="mobileRegister" style="display: none;">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="regMobileName" placeholder="முழு பெயர்" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="regMobileNumber" placeholder="மொபைல் எண்" maxlength="10" required>
+                    </div>
+                    
+                    <div class="otp-container">
+                        <button class="send-otp-btn" onclick="sendRegistrationOtp()" id="sendOtpBtn">
+                            <i class="fas fa-paper-plane"></i> OTP அனுப்பு
+                        </button>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-key"></i>
+                        <input type="text" id="regOtp" placeholder="OTP ஐ உள்ளிடவும்" maxlength="6" required>
+                    </div>
+                    
+                    <div class="terms-checkbox">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="acceptTermsMobile">
+                            <span class="checkmark"></span>
+                            <span>நிபந்தனைகளை ஏற்கிறேன் <a href="#" onclick="showTerms()">Terms & Conditions</a></span>
+                        </label>
+                    </div>
+                    
+                    <button class="btn btn-primary register-btn" onclick="registerWithMobile()">
+                        <i class="fas fa-user-plus"></i> OTP மூலம் பதிவு செய்க
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ORDER SUCCESS MODAL -->
+    <div class="modal success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header success">
+                <i class="fas fa-check-circle"></i>
+                <h3>வெற்றி!</h3>
+            </div>
+            <div class="modal-body">
+                <div class="success-animation">
+                    <i class="fas fa-check-circle"></i>
+                    <h4 id="successMessage">புத்தகம் வெற்றிகரமாக வாங்கப்பட்டது!</h4>
+                    <p id="downloadMessage">உங்கள் மின்னஞ்சலுக்கு download link அனுப்பப்பட்டுள்ளது</p>
+                    <div class="download-link" id="downloadLink"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeSuccessModal()">சரி</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DAILY WISDOM SECTION -->
+    <section class="wisdom">
+        <div class="wisdom-container">
+            <i class="fas fa-quote-left"></i>
+            <p class="wisdom-text" id="wisdomText">
+                "இன்று நமக்குக் கிடைத்த நாள், நேற்று நாம் எதிர்பார்த்த நாளே அல்ல."
+            </p>
+            <p class="wisdom-author" id="wisdomAuthor">- திருவள்ளுவர்</p>
+            <button class="wisdom-btn" onclick="getNewWisdom()">
+                <i class="fas fa-sync-alt"></i> புதிய ஞானம்
+            </button>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER SECTION -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>ஆன்மீக பயணத்தில் இணையுங்கள்</h3>
+                <p>புதிய வீடியோக்கள், கட்டுரைகள் மற்றும் சலுகைகள் நேரடியாக உங்கள் மின்னஞ்சலுக்கு</p>
+                
+                <form class="newsletter-form" onsubmit="event.preventDefault(); subscribeNewsletter()">
+                    <input type="email" placeholder="உங்கள் மின்னஞ்சல்" required>
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i> பதிவு செய்க
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="Logo" class="footer-logo-image">
+                        <h3>ஆதியும் அந்தமும்</h3>
+                    </div>
+                    <p class="footer-tagline">இது வெறும் ஒரு ஆன்மீக சேனல் அல்ல. இது உங்களை உங்களுக்குள்ளே திருப்பிக் காட்டும் ஒரு பயணம்.</p>
+                    
+                    <!-- SOCIAL MEDIA ICONS -->
+                    <div class="footer-social">
+                        <a href="https://instagram.com/aathiyum.anthamum_" target="_blank" class="social-icon instagram" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://youtube.com/@AadhiyumAnthamum" target="_blank" class="social-icon youtube" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://x.com/antamum68057" target="_blank" class="social-icon twitter" title="Twitter X">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="https://facebook.com/aadhiyumanthamum" target="_blank" class="social-icon facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://wa.me/919655595341" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>விரைவான இணைப்புகள்</h4>
+                    <ul>
+                        <li><a href="#home">முகப்பு</a></li>
+                        <li><a href="#videos">வீடியோக்கள்</a></li>
+                        <li><a href="#books">புத்தகங்கள்</a></li>
+                        <li><a href="#stories">கதைகள்</a></li>
+                        <li><a href="#about">எங்களைப் பற்றி</a></li>
+                        <li><a href="#contact">தொடர்புக்கு</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>தொடர்புக்கு</h4>
+                    <p><i class="fas fa-phone"></i> 9655595341</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ulundurpet, TN - 606107</p>
+                    <p><i class="fas fa-envelope"></i> aadhiyamanthamumofficial@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 ஆதியும் அந்தமும் - அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast"></div>
+
+    <!-- JavaScript Files -->
+    <script src="data.js"></script>
+    <script src="youtube-data.js"></script>
+    <script src="stories-data.js"></script>
+    <script src="payment-config.js"></script>
+    <script src="script.js"></script>
+    <script src="enhancements.js"></script>
+</body>
+</html>
